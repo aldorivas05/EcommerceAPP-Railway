@@ -10,18 +10,19 @@ const { logErrors, errorHandler, boomErrorHandler } = require('./middleware/erro
 // Para recibir data app.use(express.json());
 app.use(express.json());
 //Los domios que pueden consultar la APi
-const whitelist = ['http://localhost:8080', 'https://myapp.co'];
+//const whitelist = ['http://localhost:8080', 'https://myapp.co'];
 
-const options = {
-    origin: (origin, callback) => {
-        if (whitelist.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('No permitido'));
-        };
-    } 
-}
-app.use(cors(options));
+// const options = {
+//     origin: (origin, callback) => {
+//         if (whitelist.includes(origin)) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error('No permitido'));
+//         };
+//     } 
+// }
+// app.use(cors(options));
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.send('Hola mundo')
